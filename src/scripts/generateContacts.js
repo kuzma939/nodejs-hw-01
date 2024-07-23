@@ -14,14 +14,9 @@ const generateContacts = async (number) => {
 
         // Записуємо оновлений список контактів у файл (асинхр..)
         await fs.writeFile(PATH_DB, JSON.stringify(contacts, null, 2));
+        console.log(`${number} contacts generated successfully.`);
     } catch (error) {
         console.error("Помилка під час роботи з файлом:", error);
     }
-    const contacts = JSON.parse(fs.readFileSync(PATH_DB, 'utf8'));
-  for (let i = 0; i < number; i++) {
-    contacts.push(createFakeContact());
-  }
-  fs.writeFileSync(PATH_DB, JSON.stringify(contacts, null, 2));
-};
-
+  };
 generateContacts(5);
